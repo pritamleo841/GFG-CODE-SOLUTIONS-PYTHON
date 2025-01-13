@@ -4,19 +4,27 @@ class Solution:
     def distributeCandies(self, N, K):
         # code here
         result = [0]*K
-        candy=1
-        
+        i=0
         while N>0:
-            for i in range(K):
-                if N>=candy:
-                    result[i]+=candy
-                    N-=candy
-                else:
-                    result[i]+=N
-                    N=0
-                    break
-                candy+=1
+            candies = min(i+1,N)
+            result[i%K]+=candies #to stop overflow condition
+            N-=candies
+            i+=1
         return result
+        
+        # result = [0]*K
+        # candy=1
+        # while N>0:
+        #     for i in range(K):
+        #         if N>=candy:
+        #             result[i]+=candy
+        #             N-=candy
+        #         else:
+        #             result[i]+=N
+        #             N=0
+        #             break
+        #         candy+=1
+        # return result
                     
         
         
