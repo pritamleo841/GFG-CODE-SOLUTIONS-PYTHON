@@ -1,6 +1,7 @@
 #User function Template for python3
 
 class Solution:
+    #Painter's Partition Problem
     def splitArray(self, arr, N, K):
         # code here 
         def canSplit(largest):
