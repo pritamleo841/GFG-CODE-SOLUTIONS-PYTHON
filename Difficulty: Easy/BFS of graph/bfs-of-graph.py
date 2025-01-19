@@ -5,6 +5,10 @@ class Solution:
     # Function to return Breadth First Traversal of given graph.
     def bfsOfGraph(self, adj: List[List[int]]) -> List[int]:
         # code here
+        
+        #Mark a node as visited immediately after 
+        #it is added to the queue
+        
         queue  = deque();
         visited = [False]*len(adj)
         result = []
