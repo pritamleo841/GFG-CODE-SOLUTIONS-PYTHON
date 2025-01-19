@@ -10,10 +10,11 @@ class Solution:
         #and find how many edges are there from each vertex 
         #and return the total number of edges. 
         
+        #create an adjacency list
         adjList = [[] for i in range(V)]
         for u,v in edges:
             adjList[u].append(v)
-            
+        #count length of each adjList for each node 
         num = 0
         for u in range(V):
             num+=len(adjList[u])
