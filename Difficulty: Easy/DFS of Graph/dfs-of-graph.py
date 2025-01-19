@@ -4,10 +4,13 @@ class Solution:
     #Function to return a list containing the DFS traversal of the graph.
     def dfsOfGraph(self, adj):
         # code here
+        
+        #Mark a node as visited immediately after 
+        #it is popped (processed) from the stack  
+        
         stack  = [];
         visited = [False]*len(adj)
         result = []
-        
         #put into stack
         stack.append(0)
         
@@ -24,6 +27,7 @@ class Solution:
             for neighbour in reversed(adj[current]):
                 if not visited[neighbour]:
                     stack.append(neighbour)
+                    visited[current]=True
         return result
 
 
