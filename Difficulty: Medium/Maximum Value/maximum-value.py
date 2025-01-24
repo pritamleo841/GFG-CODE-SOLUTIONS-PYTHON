@@ -86,25 +86,27 @@ from collections import deque
 class Solution:
     def maximumValue(self,node):
         # code here
-        result = []
+        levelMax = {}
         queue = deque()
         queue.append((node,0))
+        levels = [] #keep track of levels
         
         while queue:
             node,level = queue.popleft()
-            result.append((node.data,level))
+            if level in levelMax : 
+                levelMax[level] = max(levelMax[level],node.data)
+            else:
+                levelMax[level]=node.data
+                levels.append(level) #new level encountered
+            
             if node.left:
                 queue.append((node.left,level+1))
             if node.right:
                 queue.append((node.right,level+1))
         
-        levelMax = {}
-        for value,level in result:
-            if level in levelMax : 
-                levelMax[level] = max(levelMax[level],value)
-            else:
-                levelMax[level]=value
-        result = [levelMax[level] for level in sorted(levelMax)]
+        #no need to use sorted() function    
+        result = [levelMax[level] for level in levels]
+        #result = [levelMax[level] for level in sorted(levelMax)]
         return result
             
 
