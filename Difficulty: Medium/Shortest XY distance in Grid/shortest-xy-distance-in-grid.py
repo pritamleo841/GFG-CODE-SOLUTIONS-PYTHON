@@ -2,7 +2,9 @@
 from collections import deque
 class Solution:
     def shortestXYDist(self, grid, N, M):
-        # code here 
+        # code here
+        #the trick here is to start from Y and find X; not vice versa
+        #using bfs algorithm only. Go for cardinal directions only
         directions = [
             (-1,0),(0,1),(1,0),(0,-1)
         ]
