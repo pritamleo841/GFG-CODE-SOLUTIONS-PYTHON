@@ -24,7 +24,10 @@ class Solution:
     		return True
     	
     	for u in range(n):
+    	    #for each component node
+    	    #check for its adjacent nodes and color them
     	    if color[u]==-1:
+    	        #check for every node in a component
     	        if checkBipartite(u,adj,color)==False:
     	            return False
     	return True
