@@ -2,6 +2,7 @@ from collections import deque
 class Solution:
     #Function to return list containing vertices in Topological order.
     def topologicalSort(self,adj):
+        
         #Kahn's Algorithm
         #TC - O(V+E), SC - O(V)
         n=len(adj)
@@ -29,6 +30,32 @@ class Solution:
                     queue.append(neighbor)
                     
         return topo
+        
+        '''
+        #Using dfs to get topological sorted list
+        #TC - O(V+E), SC - O(V)
+        n=len(adj)
+        stack = [] #use stack to store visited nodes
+        topo = []
+        visited = [False]*n
+        
+        #simple dfs logic
+        def dfs(v):
+            visited[v]=True #mark as visited
+            for neighbor in adj[v]: #check for each neighbor
+                if not visited[neighbor]: #if not visited , dfs it
+                    dfs(neighbor)
+            #after everything , append node to stack
+            stack.append(v)
+        
+        for v in range(n): #check for each node 
+            if not visited[v]: #if not visited,dfs it
+                dfs(v)
+        while stack: #pop each element from stack and add to resultant list
+            topo.append(stack.pop())
+        return topo
+        
+        '''
         
         
         
