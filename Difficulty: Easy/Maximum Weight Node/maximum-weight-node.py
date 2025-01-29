@@ -2,7 +2,6 @@
 
 class Solution():
     def maxWeightCell(self, Edge):
-        #your code goes here
         n = len(exits)
         # Initialize weight array with zeros
         weight = [0]*n
