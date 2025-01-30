@@ -5,6 +5,27 @@ from collections import deque
 class Solution:    
     def eventualSafeNodes(self, V : int, adj : List[List[int]]) -> List[int]:
         # code here
+        #SC - O(V)
+        visited = [0] * V  # 0 = unvisited, 1 = visiting, 2 = safe
+        #TC - O(V+E)
+        def isSafe(node):
+            if visited[node] > 0:  
+                return visited[node] == 2  # Return True if safe, False if in cycle
+            
+            visited[node] = 1  # Mark as visiting
+            for neighbor in adj[node]:
+                if visited[neighbor] == 2:  # If already safe, skip DFS
+                    continue
+                if visited[neighbor] == 1 or not isSafe(neighbor):  # Found a cycle
+                    return False
+            
+            visited[node] = 2  # Mark as safe
+            return True
+        
+        # Collect safe nodes
+        return sorted([node for node in range(V) if isSafe(node)])
+        '''
+        #using topological sort
         adjR = [[] for _ in range(V)] #SC - O(V*V)
         indegree = [0]*V #stores indegree
         #get a reversed adjacency list, u->v becomes v->u
@@ -29,6 +50,7 @@ class Solution:
                     queue.append(v)
         
         return sorted(safeNodes) #TC - O(VLOGV)
+        '''
 
 
 
