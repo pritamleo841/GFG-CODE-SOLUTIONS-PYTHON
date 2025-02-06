@@ -8,6 +8,8 @@ class Solution:
         self.time = 0  # Global counter for DFS discovery time
 
     def tarjans(self, V, adj):
+        #LEARN KOSARAJU'S ALGORITHM THAT USES TWO DFS
+        
         # Initialization
         self.disc = [-1] * V  # Discovery times
         self.low = [-1] * V  # Lowest discovery time reachable
