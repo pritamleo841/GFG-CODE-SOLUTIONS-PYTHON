@@ -14,8 +14,22 @@ class Solution:
 #Function to return a list containing the preorder traversal of the tree.
     def preorder(self,root):
         #+ab 
-        #Rescursive implementation of preorder
+        #Iterative implementation of preorder
+        if not root:
+            return None
+        stack = [root]
         result = []
+        while stack:
+            node = stack.pop()
+            result.append(node.data)
+            # Push right first, then left (so left is processed first)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left)
+        return result
+        #Rescursive implementation of preorder
+        '''result = []
         def dfs(root):
             if not root:
                 return None
@@ -23,7 +37,7 @@ class Solution:
             dfs(root.left)
             dfs(root.right)
         dfs(root)
-        return result
+        return result'''
     # code here
 
 
