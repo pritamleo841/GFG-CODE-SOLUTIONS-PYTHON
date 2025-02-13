@@ -13,7 +13,21 @@ class Solution:
     #Function to return a list containing the postorder traversal of the tree.
     def postOrder(self, root):
         # code here
-        '''Recursive Way of solving PostOrder Traversal'''
+        '''Iterative way of solving Postorder Traversal'''
+        #ab+ => rev(+ba)
+        stack = [root]
+        res = []
+        while stack:
+            node = stack.pop()
+            res.append(node.data)
+            #right will be processed first, hence left pushed first
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        return res[::-1] #reverse the answer before returning
+        
+        '''Recursive Way of solving PostOrder Traversal
         res = []
         def dfs(root):
             if not root:
@@ -23,6 +37,7 @@ class Solution:
             res.append(root.data)
         dfs(root)
         return res
+        '''
             
 
 
