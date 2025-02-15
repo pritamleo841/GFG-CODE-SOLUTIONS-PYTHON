@@ -13,7 +13,25 @@ class Node:
 class Solution:
     def inOrder(self, root):
         # code here
-        '''Recursive Inorder traversal'''
+        '''Iterative inorder traversal'''
+        #a+b
+        if not root:
+            return []
+        stack = []
+        res=[]
+        node = root
+        while stack or node:
+            #push all the nodes of left side subtree to the stack
+            while node:
+                stack.append(node)
+                node=node.left
+            #process the root node
+            node = stack.pop()
+            res.append(node.data)
+            #move to the right subtree
+            node=node.right
+        return res
+        '''Recursive Inorder traversal
         res = []
         def dfs(root):
             if not root:
@@ -22,7 +40,7 @@ class Solution:
             res.append(root.data)
             dfs(root.right)
         dfs(root)
-        return res
+        return res'''
 
 
 #{ 
