@@ -12,7 +12,7 @@ class Solution:
     def reverseLevelOrder(self,root):
         queue = deque([root])
         queueAns = deque()
-        ans = []
+       
         while queue:
             queue_len = len(queue)
             level = []
@@ -24,9 +24,8 @@ class Solution:
                 if node.right:
                     queue.append(node.right)
             queueAns.appendleft(level)
-        while queueAns:
-            ans += queueAns.popleft()
-        return ans
+        
+        return [item for sublist in queueAns for item in sublist]
         
 
 
