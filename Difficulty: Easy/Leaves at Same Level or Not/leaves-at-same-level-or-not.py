@@ -7,16 +7,19 @@ class Solution:
         #Code here
         from collections import deque
         queue=deque([(root,1)])
-        check = set()
+        leaf_level = None
         while queue:
             node,level = queue.popleft()
             if not node.left and not node.right:
-                check.add(level)
+               if leaf_level is None:
+                   leaf_level=level
+               if leaf_level!=level:
+                   return False
             if node.left:
                 queue.append((node.left,level+1))
             if node.right:
                 queue.append((node.right,level+1))
-        return True if len(check)==1 else False
+        return True
 
 
 
