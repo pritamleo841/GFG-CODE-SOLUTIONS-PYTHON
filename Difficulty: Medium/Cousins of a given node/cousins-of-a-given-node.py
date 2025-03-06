@@ -30,7 +30,6 @@ class Solution:
                 if curr_node.data == node_to_find.data:
                     found = True
                     node_to_be_find_parent = curr_parent
-                    #break  # Break inner loop once node is found
 
                 if curr_node.left:
                     queue.append((curr_node.left, curr_node))
