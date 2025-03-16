@@ -15,7 +15,7 @@ class Solution:
     def isSumProperty(self, root):
         if not root:
             return 1
-        def postorder(node):
+        def preorder(node):
             if not node:
                 return True
             if not node.left and not node.right:
@@ -25,9 +25,9 @@ class Solution:
             
             if left_sum+right_sum!=node.data:
                 return False
-            return postorder(node.left) and postorder(node.right)
+            return preorder(node.left) and preorder(node.right)
             
-        return 1 if postorder(root) else 0
+        return 1 if preorder(root) else 0
             
 
 
