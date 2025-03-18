@@ -2,6 +2,7 @@
 
 class Solution:
     def steppingNumbers(self, n, m):
+        #GRAPH BFS
         count = 0  # Counter for stepping numbers
         def bfs(num):
             q = [num]
