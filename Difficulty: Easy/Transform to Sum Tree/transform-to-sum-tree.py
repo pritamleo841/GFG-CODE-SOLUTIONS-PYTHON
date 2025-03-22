@@ -10,23 +10,21 @@ class Node:
 '''
 class Solution:
     def toSumTree(self, root) :
-        def postOrder(node):
-            if node is None:
+        if not root:
+            return None
+        def postorder(node):
+            if not node:
                 return 0
+            ltree=postorder(node.left)
+            rtree=postorder(node.right)
+            
             old_val = node.data
+            node_sum=ltree+rtree
+            node.data=node_sum #only left and right subtree sum
+            return node_sum+old_val
+        postorder(root)
+        return root
             
-            if node.left:
-                left_sum = postOrder(node.left)
-            else:
-                left_sum = 0
-            if node.right:
-                right_sum = postOrder(node.right)
-            else:
-                right_sum = 0
-            
-            node.data = left_sum + right_sum
-            return node.data + old_val
-        postOrder(root)
 
 
 #{ 
