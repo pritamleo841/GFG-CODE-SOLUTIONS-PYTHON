@@ -1,5 +1,9 @@
 #User function Template for python3
-
+'''
+Level input isn’t necessary (if we ignore max position limit) because first elements are same.
+The result is based on count of 1’s in binary representation of position minus one. If count of 1’s is even then result is Engineer, else then Doctor.
+And of course position limit is 2^(Level-1)
+'''
 class Solution:
     def profession(self, level, pos):
         #Function to get no of set bits in binary representation of passed binary no.
