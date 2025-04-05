@@ -6,6 +6,7 @@ class Solution:
         Only add open parenthesis if open<n
         Only add close parenthesis if close<open
         stop when open=close=n
+        
         '''
         res = []
         ans = []
