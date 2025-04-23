@@ -4,12 +4,13 @@ from typing import List
 
 class Solution:
     def uniqueRow(self, row : int, col : int, M : List[List[int]]) -> List[List[int]]:
-        unique=dict()
+        unique=dict() #ordered-set in python
         for r in range(row):
             ch=""
             for c in range(col):
                 ch+=str(M[r][c])
             unique[ch]=None
+            
         return ["".join(key) for key in unique]
     
 
