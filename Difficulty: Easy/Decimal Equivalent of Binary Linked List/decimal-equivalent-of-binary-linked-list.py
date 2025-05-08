@@ -21,14 +21,22 @@ class Solution:
         
     def decimalValue(self, head):
         MOD = 10**9 + 7
-        new_head = self.reverseList(head)
-        i=0
-        ans=0
-        while new_head:
-            ans+=((new_head.data)*(2**i))%MOD
-            new_head=new_head.next
-            i+=1
-        return ans%MOD
+        result = 0
+        curr = head
+
+        while curr:
+            result = (result*2+curr.data)%MOD
+            curr = curr.next
+
+        return result
+        # new_head = self.reverseList(head)
+        # i=0
+        # ans=0
+        # while new_head:
+        #     ans+=((new_head.data)*(2**i))%MOD
+        #     new_head=new_head.next
+        #     i+=1
+        # return ans%MOD
 
 
 
