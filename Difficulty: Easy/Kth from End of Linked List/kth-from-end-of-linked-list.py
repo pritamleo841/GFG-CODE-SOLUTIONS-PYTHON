@@ -12,7 +12,20 @@
 #Function to find the data of kth node from the end of a linked list
 class Solution:
     def getKthFromLast(self, head, k):
+        fast = slow = head
+        # Move fast pointer k steps ahead
+        for _ in range(k):
+            if not fast:
+                return -1  # k is larger than the list length
+            fast = fast.next
+        # Move both pointers until fast reaches the end
+        while fast:
+            slow = slow.next
+            fast = fast.next
+
+        return slow.data if slow else -1
         
+        '''
         #modifies the list - improve solution
         def reverseList(head):
             prev=None
@@ -31,6 +44,7 @@ class Solution:
             new_head=new_head.next
             count+=1
         return -1
+        '''
         
 
 
