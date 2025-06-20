@@ -1,6 +1,6 @@
 
 class Solution:
-    def isBalanced(self, s):
+    def isBalanced(self,s):
         stack = []
         bracket_map = {')': '(', ']': '[', '}': '{'}
         for ch in s:
