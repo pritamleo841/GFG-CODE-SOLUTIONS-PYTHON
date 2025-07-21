@@ -7,6 +7,33 @@ class Solution:
             max_left[i]:The tallest bar to the left of index i (including i)
             max_right[i]:The tallest bar to the right of index i (including i)
         '''
+        #TC-O(n), SC - o(1) => two pointer approach
+        n=len(height)
+        if n<=2:
+            return 0
+    
+        left=0
+        right=n-1
+        left_max=0
+        right_max=0
+        trapped=0
+    
+        while left<right:
+            if height[left]<height[right]:
+                if height[left]>=left_max:
+                    left_max=height[left]
+                else:
+                    trapped+=left_max-height[left]
+                left+=1
+            else:
+                if height[right]>=right_max:
+                    right_max=height[right]
+                else:
+                    trapped+=right_max-height[right]
+                right-=1
+    
+        return trapped
+        
         '''
         We use a monotonic decreasing stack to store the indices of the bars.
         As we traverse the array:
@@ -14,7 +41,9 @@ class Solution:
             Pop the stack to get the bottom of the water container.
             The current index is the right wall, and the new top of the stack is the left wall.
             Compute the bounded height and width to find trapped water.
-        '''
+            
+        #TC-O(n), SC - o(n) =>monotonic decreasing stack
+        
         n=len(height)
         stack=[]
         water=0
@@ -34,4 +63,5 @@ class Solution:
             stack.append(i)
     
         return water
+        '''
         
